@@ -1,0 +1,85 @@
+/* AutoCare Garage Theme - visual only, no logic changes */
+:root{
+  --bg: #0f172a; /* slate-900 */
+  --bg-grad: linear-gradient(135deg, #0f172a 0%, #1f2937 50%, #0f172a 100%);
+  --card: #0b1220; /* slightly lighter */
+  --border: #1f2937;
+  --accent: #34d399; /* emerald */
+  --accent-2: #60a5fa; /* blue */
+  --muted: #9ca3af;
+  --text: #e5e7eb;
+  --link: #60a5fa;
+  --danger: #ef4444;
+  --warn: #f59e0b;
+  --ok: #10b981;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+html,body{background:var(--bg-grad); color:var(--text);} 
+
+/* Containers */
+.header{background:rgba(2,6,23,0.8) !important; backdrop-filter: blur(6px); border-bottom:1px solid var(--border); box-shadow: var(--shadow)}
+.container{animation: fadeIn .35s ease-out}
+
+/* Cards */
+.card{background: radial-gradient(1200px 600px at top right, rgba(96,165,250,0.07), transparent 40%),
+                  radial-gradient(800px 400px at bottom left, rgba(52,211,153,0.06), transparent 40%),
+                  var(--card) !important; 
+      border:1px solid var(--border) !important; 
+      box-shadow: var(--shadow) !important; 
+      transition: transform .2s ease, box-shadow .2s ease}
+.card:hover{transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,0.45)}
+
+/* Buttons */
+.btn{background:linear-gradient(180deg, rgba(96,165,250,0.2), rgba(96,165,250,0.1)) !important;
+     color:var(--text)!important; border:1px solid #375a7f !important; transition: transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.35)}
+.btn.primary{background:linear-gradient(180deg, rgba(52,211,153,0.25), rgba(16,185,129,0.18)) !important; border-color:#0e7a5e !important}
+.btn:active{transform: translateY(0)}
+
+/* Inputs */
+.input,.select{background:#0a1220 !important; color:var(--text) !important; border:1px solid var(--border) !important}
+.input:focus,.select:focus{outline:2px solid rgba(96,165,250,0.5)}
+
+/* Tables */
+.table{border-radius:12px; overflow:hidden}
+.table thead th{background:#0b1730; color:#cbd5e1}
+.table tbody tr{transition: background .12s ease}
+.table tbody tr:hover{background:rgba(96,165,250,0.06)}
+
+/* Links */
+.link{color:var(--link)!important}
+.link:hover{text-decoration: underline}
+
+/* Badges */
+.badge{border:1px solid rgba(255,255,255,0.08)}
+.badge.new{background: rgba(96,165,250,0.15); color:#93c5fd}
+.badge.approved{background: rgba(52,211,153,0.15); color:#a7f3d0}
+.badge.assigned{background: rgba(245,158,11,0.15); color:#fcd34d}
+.badge.in_progress{background: rgba(167,139,250,0.15); color:#ddd6fe}
+.badge.on_hold{background: rgba(239,68,68,0.15); color:#fecaca}
+.badge.completed{background: rgba(16,185,129,0.15); color:#bbf7d0}
+.badge.cancelled{background: rgba(239,68,68,0.15); color:#fecaca}
+.badge.draft{background: rgba(96,165,250,0.15); color:#93c5fd}
+.badge.issued{background: rgba(245,158,11,0.18); color:#fde68a}
+.badge.paid{background: rgba(16,185,129,0.18); color:#bbf7d0}
+
+/* Headings with subtle icons (Font Awesome already loaded on pages) */
+.card h2, .card h3{position:relative; padding-left:28px}
+.card h2:before, .card h3:before{content:"\f0ad"; /* fa-wrench */ font-family:"Font Awesome 6 Free"; font-weight:900; position:absolute; left:0; top:2px; color:var(--accent-2)}
+
+/* Section-specific hint: Appointments/Jobs tables */
+.card h2:has(> .fa-calendar), .card h3:has(> .fa-calendar){color:#93c5fd}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0; transform: translateY(6px)} to{opacity:1; transform:none}}
+
+/* Header title tweak */
+.header .header-title{display:flex; align-items:center; gap:10px}
+.header .header-title:before{content:"\f0ad"; font-family:"Font Awesome 6 Free"; font-weight:900; color:var(--accent)}
+
+/* Print page table borders */
+@media print{
+  body{background:#fff}
+  .card{box-shadow:none}
+}

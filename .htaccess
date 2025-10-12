@@ -1,0 +1,12 @@
+# Use this if you access the app via http://localhost/project/
+Options -Multiviews
+RewriteEngine On
+RewriteBase /project/
+
+# If the requested file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise, route everything to index.php
+RewriteRule ^ index.php [L]
